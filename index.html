@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HACKER HOUSE | HYOGO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #0d1117; /* GitHub Dark Dimmed風 */
+            color: #c9d1d9;
+        }
+        .accent {
+            color: #3fb950; /* Terminal Green */
+        }
+        .border-accent {
+            border-color: #3fb950;
+        }
+        .btn-primary {
+            background-color: #238636;
+            color: white;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #2ea043;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 160, 67, 0.4);
+        }
+        /* カーソル点滅アニメーション */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            background-color: #3fb950;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .glitch-effect:hover {
+            text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="w-full py-6 px-8 flex justify-between items-center border-b border-gray-800 sticky top-0 bg-[#0d1117] z-50">
+        <div class="text-xl font-bold tracking-tighter">
+            <span class="accent">./</span>HACKER_HOUSE
+        </div>
+        <nav class="hidden md:flex gap-6 text-sm">
+            <a href="#concept" class="hover:text-white transition">CONCEPT</a>
+            <a href="#features" class="hover:text-white transition">FEATURES</a>
+            <a href="#locations" class="hover:text-white transition">LOCATIONS</a>
+        </nav>
+        <a href="#contact" class="px-4 py-2 border border-gray-600 rounded text-sm hover:border-white transition">
+            CONTACT
+        </a>
+    </header>
+
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-10" style="background-image: radial-gradient(#3fb950 1px, transparent 1px); background-size: 30px 30px;"></div>
+        
+        <div class="z-10 max-w-4xl">
+            <p class="text-gray-500 mb-4 text-sm">Target: Engineers, Hackers, Creators</p>
+            <h1 class="text-4xl md:text-7xl font-bold mb-6 leading-tight">
+                BUILD YOUR <br>
+                <span id="typing-text" class="accent"></span><span class="cursor">&nbsp;</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+                「寝る」と「書く」だけに特化した秘密基地。
+                <br>鍵付きポッド × 専用デスク完備のハッカーシェアハウス。
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="https://line.me/R/ti/p/%40778pfiyp" class="btn-primary px-8 py-4 rounded font-bold text-lg flex items-center justify-center gap-2">
+                    <i data-lucide="terminal"></i> JOIN THE BASE
+                </a>
+                <a href="#" target="_blank" class="px-8 py-4 border border-gray-600 rounded font-bold text-lg hover:border-white transition flex items-center justify-center gap-2">
+                    VIEW BETA VERSION <i data-lucide="external-link" size="16"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="concept" class="py-20 px-6 bg-[#161b22]">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="flex-1">
+                    <h2 class="text-3xl font-bold mb-6"><span class="accent">#</span> WHY US?</h2>
+                    <p class="mb-6 leading-relaxed text-gray-400">
+                        一般的なシェアハウスは、エンジニアにはノイズが多すぎる。<br>
+                        ドミトリーはプライバシーがない。カフェは電源の奪い合いだ。<br><br>
+                        我々が提供するのは、<strong class="text-white">「没頭」するためのインフラ</strong>だ。<br>
+                        生活コストを極限まで下げ（minimize）、<br>
+                        開発リソースを最大化（maximize）せよ。
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="accent" size="18"></i> 24h Coding Environment</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="accent" size="18"></i> High Speed Wi-Fi</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="accent" size="18"></i> No Useless Socializing</li>
+                    </ul>
+                </div>
+                <div class="flex-1 bg-black p-6 rounded-lg border border-gray-700 font-mono text-sm overflow-hidden shadow-2xl">
+<pre class="text-gray-300">
+class LifeStyle {
+  constructor() {
+    this.rent = "Low";
+    this.privacy = "Protected";
+    this.desk = "Dedicated";
+  }
+
+  optimize() {
+    while(alive) {
+      sleep();
+      code();
+      create();
+    }
+  }
+}
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center"><span class="accent">#</span> SYSTEM SPECS</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-[#161b22] p-8 rounded border border-gray-800 hover:border-accent transition group">
+                    <div class="bg-gray-800 w-12 h-12 rounded flex items-center justify-center mb-6 group-hover:bg-[#238636] transition">
+                        <i data-lucide="lock" class="text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Locked Pods (Sleep)</h3>
+                    <p class="text-gray-400">
+                        二段ベッド？いいえ、カプセルルームです。<br>
+                        開口部に壁と鍵付きドアを設置（予定）。<br>
+                        物理的なプライバシーを確保し、誰にも邪魔されない睡眠環境を構築。
+                    </p>
+                </div>
+
+                <div class="bg-[#161b22] p-8 rounded border border-gray-800 hover:border-accent transition group">
+                    <div class="bg-gray-800 w-12 h-12 rounded flex items-center justify-center mb-6 group-hover:bg-[#238636] transition">
+                        <i data-lucide="monitor" class="text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">1 Person 1 Desk (Work)</h3>
+                    <p class="text-gray-400">
+                        リビングは「くつろぐ場所」ではなく「コワーキングスペース」。<br>
+                        入居者全員分の専用デスクを用意。<br>
+                        モニターを置くもよし、サーバーを組むもよし。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="locations" class="py-20 px-6 bg-[#161b22]">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center"><span class="accent">#</span> AVAILABLE BASES</h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <div class="border border-gray-700 rounded-lg overflow-hidden bg-[#0d1117]">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center text-gray-500 relative">
+                        <span class="z-10 flex flex-col items-center">
+                            <i data-lucide="home" size="40" class="mb-2"></i>
+                            IMAGE: BASE 01
+                        </span>
+                        <div class="absolute top-4 right-4 bg-green-900 text-green-300 text-xs px-2 py-1 rounded border border-green-700 animate-pulse">
+                            STATUS: ONLINE
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">BASE 01: HYOGO</h3>
+                        <p class="text-sm text-gray-400 mb-4">兵庫県某所 / 既存物件ハック済み</p>
+                        <p class="text-gray-300 mb-6 text-sm">
+                            即入居可能なβ版ベース。低コストで確保された最低限かつ最強の環境。
+                            まずはここから始めよう。
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold accent">¥ Cheap/mo</span>
+                            <a href="https://line.me/R/ti/p/%40778pfiyp" target="_blank" class="text-white underline hover:text-accent">
+                                詳細を見る ->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border border-gray-700 border-dashed rounded-lg overflow-hidden bg-[#0d1117] relative">
+                    <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-10">
+                        <h3 class="text-3xl font-bold text-gray-500 transform -rotate-12 border-4 border-gray-500 px-4 py-2">
+                            COMING SOON
+                        </h3>
+                    </div>
+                    <div class="h-48 bg-gray-900 flex items-center justify-center text-gray-600">
+                        <i data-lucide="hammer" size="40"></i>
+                    </div>
+                    <div class="p-6 opacity-50">
+                        <h3 class="text-2xl font-bold mb-2">BASE 02: RE:BOOT</h3>
+                        <p class="text-sm text-gray-400 mb-4">BASE 01近郊 / 空き家リノベ・プロジェクト</p>
+                        <p class="text-gray-300 mb-6 text-sm">
+                            ゼロからの拠点構築。壁の塗装からLAN配線まで。
+                            DIY好きのエンジニア、初期メンバー募集中。
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-500">¥ Undecided</span>
+                            <span class="text-gray-500 cursor-not-allowed">準備中</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-6 text-center">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-4xl font-bold mb-6">READY TO DEPLOY?</h2>
+            <p class="text-gray-400 mb-10">
+                入居希望、または空き家リノベプロジェクトへの参加希望は<br>
+                以下のリンクからコンタクトしてください。
+            </p>
+            <a href="https://line.me/R/ti/p/%40778pfiyp" class="btn-primary px-10 py-5 rounded font-bold text-xl inline-flex items-center gap-3">
+                <i data-lucide="mail"></i> APPLY NOW
+            </a>
+            <p class="mt-8 text-xs text-gray-600">
+                © 2024 HACKER BASE PROJECT. All systems operational.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // アイコンの初期化
+        lucide.createIcons();
+
+        // タイピングアニメーション
+        const textElement = document.getElementById('typing-text');
+        const phrases = ["FUTURE.", "CODE.", "BASE.", "LIFE."];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 100 : 200;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 2000; // 単語表示後の待機時間
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', type);
+    </script>
+</body>
+</html>
