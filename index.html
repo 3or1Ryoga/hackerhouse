@@ -11,14 +11,14 @@
     <style>
         body {
             font-family: 'JetBrains Mono', monospace;
-            background-color: #0d1117; /* GitHub Dark Dimmed風 */
+            background-color: #0d1117;
             color: #c9d1d9;
         }
         .accent {
-            color: #3fb950; /* Terminal Green */
+            color: #3fb950;
         }
-        .border-accent {
-            border-color: #3fb950;
+        .text-error {
+            color: #f85149;
         }
         .btn-primary {
             background-color: #238636;
@@ -30,7 +30,6 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(46, 160, 67, 0.4);
         }
-        /* カーソル点滅アニメーション */
         .cursor {
             display: inline-block;
             width: 10px;
@@ -41,8 +40,42 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
-        .glitch-effect:hover {
-            text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
+        .input-hack {
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            color: #c9d1d9;
+            padding: 0.8rem 1rem;
+            width: 100%;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            transition: border-color 0.2s;
+        }
+        .input-hack:focus {
+            outline: none;
+            border-color: #3fb950;
+            box-shadow: 0 0 0 3px rgba(63, 185, 80, 0.1);
+        }
+        .panel {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+        }
+        .fare-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            font-size: 0.75rem;
+        }
+        .fare-item {
+            background: rgba(48, 54, 61, 0.4);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            color: #8b949e;
+        }
+        .fare-price {
+            color: #c9d1d9;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -54,7 +87,7 @@
         </div>
         <nav class="hidden md:flex gap-6 text-sm">
             <a href="#concept" class="hover:text-white transition">CONCEPT</a>
-            <a href="#features" class="hover:text-white transition">FEATURES</a>
+            <a href="#simulation" class="hover:text-white transition text-white border-b border-accent">SIMULATION</a>
             <a href="#locations" class="hover:text-white transition">LOCATIONS</a>
         </nav>
         <a href="#contact" class="px-4 py-2 border border-gray-600 rounded text-sm hover:border-white transition">
@@ -72,56 +105,129 @@
                 <span id="typing-text" class="accent"></span><span class="cursor">&nbsp;</span>
             </h1>
             <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-                「寝る」と「書く」だけに特化した秘密基地。
-                <br>鍵付きポッド × 専用デスク完備のハッカーシェアハウス。
+                「寝る」と「書く」だけに特化した要塞。
+                <br>生活コストと移動時間をハックせよ。
             </p>
             <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="https://line.me/R/ti/p/%40778pfiyp" class="btn-primary px-8 py-4 rounded font-bold text-lg flex items-center justify-center gap-2">
-                    <i data-lucide="terminal"></i> JOIN THE BASE
+                <a href="#simulation" class="btn-primary px-8 py-4 rounded font-bold text-lg flex items-center justify-center gap-2">
+                    <i data-lucide="calculator"></i> SIMULATE COST
                 </a>
-                <a href="#" target="_blank" class="px-8 py-4 border border-gray-600 rounded font-bold text-lg hover:border-white transition flex items-center justify-center gap-2">
+                <a href="https://jmty.jp/hyogo/est-hou/article-est_vh_5050040504" target="_blank" class="px-8 py-4 border border-gray-600 rounded font-bold text-lg hover:border-white transition flex items-center justify-center gap-2">
                     VIEW BETA VERSION <i data-lucide="external-link" size="16"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="concept" class="py-20 px-6 bg-[#161b22]">
-        <div class="max-w-5xl mx-auto">
-            <div class="flex flex-col md:flex-row gap-12 items-center">
-                <div class="flex-1">
-                    <h2 class="text-3xl font-bold mb-6"><span class="accent">#</span> WHY US?</h2>
-                    <p class="mb-6 leading-relaxed text-gray-400">
-                        一般的なシェアハウスは、エンジニアにはノイズが多すぎる。<br>
-                        ドミトリーはプライバシーがない。カフェは電源の奪い合いだ。<br><br>
-                        我々が提供するのは、<strong class="text-white">「没頭」するためのインフラ</strong>だ。<br>
-                        生活コストを極限まで下げ（minimize）、<br>
-                        開発リソースを最大化（maximize）せよ。
-                    </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="accent" size="18"></i> 24h Coding Environment</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="accent" size="18"></i> High Speed Wi-Fi</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="accent" size="18"></i> No Useless Socializing</li>
-                    </ul>
-                </div>
-                <div class="flex-1 bg-black p-6 rounded-lg border border-gray-700 font-mono text-sm overflow-hidden shadow-2xl">
-<pre class="text-gray-300">
-class LifeStyle {
-  constructor() {
-    this.rent = "Low";
-    this.privacy = "Protected";
-    this.desk = "Dedicated";
-  }
+    <section id="simulation" class="py-20 px-6 bg-[#0d1117]">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-lg md:text-3xl font-bold mb-4 break-all">
+                    <span class="accent">func</span> calculate_inefficiency()
+                </h2>
+                <p class="text-gray-400">
+                    現在、通学にいくらかけていますか？<br>
+                    片道のコストを入力して、無駄を可視化してください。
+                </p>
+            </div>
 
-  optimize() {
-    while(alive) {
-      sleep();
-      code();
-      create();
-    }
-  }
-}
-</pre>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="panel p-8 rounded-lg">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i data-lucide="edit-3" class="accent"></i> CURRENT STATUS
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div class="border border-gray-700 rounded p-3 bg-[#0d1117]">
+                            <p class="text-[10px] text-gray-500 mb-2 uppercase tracking-wider flex items-center gap-1">
+                                <i data-lucide="info" size="10"></i> Bus Fare Reference (One-way)
+                            </p>
+                            <div class="fare-grid">
+                                <div class="fare-item"><span>大阪梅田</span><span class="fare-price">¥680</span></div>
+                                <div class="fare-item"><span>新大阪</span><span class="fare-price">¥690</span></div>
+                                <div class="fare-item"><span>千里NT</span><span class="fare-price">¥680</span></div>
+                                <div class="fare-item"><span>箕面萱野</span><span class="fare-price">¥680</span></div>
+                                <div class="fare-item"><span>三宮</span><span class="fare-price">¥610</span></div>
+                                <div class="fare-item"><span>新三田</span><span class="fare-price">¥320</span></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-2">ONE-WAY COST (JPY)</label>
+                            <input type="number" id="inputCost" placeholder="680" class="input-hack">
+                            <p class="text-[10px] text-gray-600 mt-1">※参考価格を元に、実際の片道運賃を入力してください</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-2">ONE-WAY TIME (min)</label>
+                            <input type="number" id="inputTime" placeholder="60" class="input-hack">
+                            <p class="text-[10px] text-gray-600 mt-1">※片道の通学時間</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-2">COMMUTE DAYS / MONTH</label>
+                            <input type="number" id="inputDays" value="20" class="input-hack">
+                        </div>
+
+                        <button id="runSimulationBtn" class="btn-primary w-full py-4 rounded font-bold mt-4 flex justify-center items-center gap-2 text-lg">
+                            <i data-lucide="play"></i> RUN SIMULATION
+                        </button>
+                    </div>
+                </div>
+
+                <div id="resultPanel" class="panel p-8 rounded-lg relative overflow-hidden hidden md:block">
+                    <div id="resultOverlay" class="absolute inset-0 bg-[#161b22] z-10 flex items-center justify-center flex-col text-center p-6">
+                        <p class="text-gray-500 font-mono text-sm mb-2">WAITING FOR INPUT...</p>
+                        <p class="text-xs text-gray-700">左側のフォームに数値を入力して<br>シミュレーションを実行してください。</p>
+                    </div>
+
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i data-lucide="terminal" class="accent"></i> ANALYSIS REPORT
+                    </h3>
+
+                    <div class="space-y-6 font-mono text-sm">
+                        <div class="bg-black p-4 rounded border border-gray-800">
+                            <p class="text-gray-500 text-xs mb-2">MONTHLY TOTAL (Transport + Rent)</p>
+                            <div class="flex justify-between items-end mb-2">
+                                <span>YOU:</span>
+                                <span class="text-error" id="resUserCost">---</span>
+                            </div>
+                            <div class="flex justify-between items-end mb-4">
+                                <span>HACKER HOUSE:</span>
+                                <span class="accent" id="resHackerCost">---</span>
+                            </div>
+                            <div class="border-t border-gray-800 pt-2 text-right">
+                                <span class="text-xs text-gray-500">DIFFERENCE:</span>
+                                <span class="text-lg font-bold" id="resCostDiff">---</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-black p-4 rounded border border-gray-800">
+                            <p class="text-gray-500 text-xs mb-2">WASTED TIME / MONTH</p>
+                            <div class="flex justify-between items-center">
+                                <span>COMMUTE TIME:</span>
+                                <span class="text-error font-bold"><span id="resTimeLost">0</span> hours</span>
+                            </div>
+                            <p class="text-gray-600 text-xs mt-2 text-right">
+                                (Compared to HH commute: ~30min)
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded border border-dashed border-accent bg-[#0d1117]">
+                            <p class="accent text-xs mb-2 font-bold">>>> OPPORTUNITY DETECTED</p>
+                            <p class="mb-2 text-xs">
+                                浮いた時間を生産活動（時給換算¥1,000）に充てた場合:
+                            </p>
+                            <div class="text-2xl font-bold text-white text-center my-3">
+                                +<span id="resOpportunity">0</span> JPY / mo
+                            </div>
+                            <div class="text-center">
+                                <a href="https://line.me/R/ti/p/%40778pfiyp" target="_blank" class="text-xs underline text-white hover:text-accent">
+                                    バイト・案件紹介について問い合わせる 
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -130,30 +236,20 @@ class LifeStyle {
     <section id="features" class="py-20 px-6">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl font-bold mb-12 text-center"><span class="accent">#</span> SYSTEM SPECS</h2>
-            
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-[#161b22] p-8 rounded border border-gray-800 hover:border-accent transition group">
                     <div class="bg-gray-800 w-12 h-12 rounded flex items-center justify-center mb-6 group-hover:bg-[#238636] transition">
                         <i data-lucide="lock" class="text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Locked Pods (Sleep)</h3>
-                    <p class="text-gray-400">
-                        二段ベッド？いいえ、カプセルルームです。<br>
-                        開口部に壁と鍵付きドアを設置（予定）。<br>
-                        物理的なプライバシーを確保し、誰にも邪魔されない睡眠環境を構築。
-                    </p>
+                    <p class="text-gray-400">二段ベッド？いいえ、カプセルルームです。物理的なプライバシーを確保。</p>
                 </div>
-
                 <div class="bg-[#161b22] p-8 rounded border border-gray-800 hover:border-accent transition group">
                     <div class="bg-gray-800 w-12 h-12 rounded flex items-center justify-center mb-6 group-hover:bg-[#238636] transition">
                         <i data-lucide="monitor" class="text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">1 Person 1 Desk (Work)</h3>
-                    <p class="text-gray-400">
-                        リビングは「くつろぐ場所」ではなく「コワーキングスペース」。<br>
-                        入居者全員分の専用デスクを用意。<br>
-                        モニターを置くもよし、サーバーを組むもよし。
-                    </p>
+                    <p class="text-gray-400">リビングはコワーキングスペース。入居者全員分の専用デスクを用意。</p>
                 </div>
             </div>
         </div>
@@ -162,58 +258,27 @@ class LifeStyle {
     <section id="locations" class="py-20 px-6 bg-[#161b22]">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl font-bold mb-12 text-center"><span class="accent">#</span> AVAILABLE BASES</h2>
-
             <div class="grid md:grid-cols-2 gap-8">
-                
                 <div class="border border-gray-700 rounded-lg overflow-hidden bg-[#0d1117]">
-                    <div class="h-48 bg-gray-800 flex items-center justify-center text-gray-500 relative">
-                        <span class="z-10 flex flex-col items-center">
-                            <i data-lucide="home" size="40" class="mb-2"></i>
-                            IMAGE: BASE 01
-                        </span>
-                        <div class="absolute top-4 right-4 bg-green-900 text-green-300 text-xs px-2 py-1 rounded border border-green-700 animate-pulse">
-                            STATUS: ONLINE
-                        </div>
-                    </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold mb-2">BASE 01: HYOGO</h3>
-                        <p class="text-sm text-gray-400 mb-4">兵庫県某所 / 既存物件ハック済み</p>
-                        <p class="text-gray-300 mb-6 text-sm">
-                            即入居可能なβ版ベース。低コストで確保された最低限かつ最強の環境。
-                            まずはここから始めよう。
-                        </p>
+                        <p class="text-sm text-gray-400 mb-4">兵庫県三田市 / 三田駅バス圏内</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-xl font-bold accent">¥ Cheap/mo</span>
-                            <a href="https://line.me/R/ti/p/%40778pfiyp" target="_blank" class="text-white underline hover:text-accent">
-                                詳細を見る ->
-                            </a>
+                            <span class="text-xl font-bold accent">¥ 20,000/mo</span>
+                            <a href="https://jmty.jp/hyogo/est-hou/article-est_vh_5050040504" target="_blank" class="text-white underline hover:text-accent">詳細を見る -></a>
                         </div>
                     </div>
                 </div>
-
-                <div class="border border-gray-700 border-dashed rounded-lg overflow-hidden bg-[#0d1117] relative">
-                    <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-10">
-                        <h3 class="text-3xl font-bold text-gray-500 transform -rotate-12 border-4 border-gray-500 px-4 py-2">
-                            COMING SOON
-                        </h3>
-                    </div>
-                    <div class="h-48 bg-gray-900 flex items-center justify-center text-gray-600">
-                        <i data-lucide="hammer" size="40"></i>
-                    </div>
-                    <div class="p-6 opacity-50">
+                <div class="border border-gray-700 border-dashed rounded-lg overflow-hidden bg-[#0d1117] opacity-50">
+                    <div class="p-6">
                         <h3 class="text-2xl font-bold mb-2">BASE 02: RE:BOOT</h3>
-                        <p class="text-sm text-gray-400 mb-4">BASE 01近郊 / 空き家リノベ・プロジェクト</p>
-                        <p class="text-gray-300 mb-6 text-sm">
-                            ゼロからの拠点構築。壁の塗装からLAN配線まで。
-                            DIY好きのエンジニア、初期メンバー募集中。
-                        </p>
+                        <p class="text-sm text-gray-400 mb-4">BASE 01近郊 / 空き家リノベPJ</p>
                         <div class="flex items-center justify-between">
                             <span class="text-xl font-bold text-gray-500">¥ Undecided</span>
-                            <span class="text-gray-500 cursor-not-allowed">準備中</span>
+                            <span class="text-gray-500">準備中</span>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -221,56 +286,100 @@ class LifeStyle {
     <section id="contact" class="py-20 px-6 text-center">
         <div class="max-w-2xl mx-auto">
             <h2 class="text-4xl font-bold mb-6">READY TO DEPLOY?</h2>
-            <p class="text-gray-400 mb-10">
-                入居希望、または空き家リノベプロジェクトへの参加希望は<br>
-                以下のリンクからコンタクトしてください。
-            </p>
-            <a href="https://line.me/R/ti/p/%40778pfiyp" class="btn-primary px-10 py-5 rounded font-bold text-xl inline-flex items-center gap-3">
-                <i data-lucide="mail"></i> APPLY NOW
+            <a href="https://line.me/R/ti/p/%40778pfiyp" target="_blank" class="btn-primary px-10 py-5 rounded font-bold text-xl inline-flex items-center gap-3">
+                <i data-lucide="message-circle"></i> CONTACT VIA LINE
             </a>
-            <p class="mt-8 text-xs text-gray-600">
-                © 2024 HACKER BASE PROJECT. All systems operational.
-            </p>
+            <p class="mt-8 text-xs text-gray-600">© 2024 HACKER BASE PROJECT.</p>
         </div>
     </section>
 
     <script>
-        // アイコンの初期化
-        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
 
-        // タイピングアニメーション
-        const textElement = document.getElementById('typing-text');
-        const phrases = ["FUTURE.", "CODE.", "BASE.", "LIFE."];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-
-        function type() {
-            const currentPhrase = phrases[phraseIndex];
+            const textElement = document.getElementById('typing-text');
+            const phrases = ["FUTURE.", "CODE.", "BASE.", "LIFE."];
+            let phraseIndex = 0; let charIndex = 0; let isDeleting = false;
             
-            if (isDeleting) {
-                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
+            function type() {
+                const currentPhrase = phrases[phraseIndex];
+                if (isDeleting) { textElement.textContent = currentPhrase.substring(0, charIndex - 1); charIndex--; }
+                else { textElement.textContent = currentPhrase.substring(0, charIndex + 1); charIndex++; }
+                let typeSpeed = isDeleting ? 100 : 200;
+                if (!isDeleting && charIndex === currentPhrase.length) { typeSpeed = 2000; isDeleting = true; }
+                else if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; typeSpeed = 500; }
+                setTimeout(type, typeSpeed);
+            }
+            type();
+
+            const runBtn = document.getElementById('runSimulationBtn');
+            const resultPanel = document.getElementById('resultPanel');
+
+            if (runBtn) {
+                runBtn.addEventListener('click', calculateManual);
             }
 
-            let typeSpeed = isDeleting ? 100 : 200;
+            function calculateManual() {
+                const inputCost = parseInt(document.getElementById('inputCost').value);
+                const inputTime = parseInt(document.getElementById('inputTime').value);
+                const days = parseInt(document.getElementById('inputDays').value) || 20;
+                
+                if(isNaN(inputCost) || isNaN(inputTime)) {
+                    alert("交通費と時間を正しく入力してください（半角数字）。");
+                    return;
+                }
 
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                typeSpeed = 2000; // 単語表示後の待機時間
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typeSpeed = 500;
+                resultPanel.classList.remove('hidden');
+
+                const userMonthlyCost = inputCost * 2 * days;
+                const userMonthlyTime = inputTime * 2 * days; 
+
+                // --- Hacker House (固定値) ---
+                const hhRent = 20000;
+                const hhOneWayCost = 390; 
+                // ★修正: 18分 -> 30分に変更
+                const hhOneWayTime = 30;  
+                
+                const hhTotalMonthlyCost = hhRent + (hhOneWayCost * 2 * days);
+                const hhMonthlyTime = hhOneWayTime * 2 * days;
+
+                // --- 結果表示 ---
+                document.getElementById('resultOverlay').style.display = 'none';
+
+                document.getElementById('resUserCost').textContent = `¥ ${userMonthlyCost.toLocaleString()}`;
+                document.getElementById('resHackerCost').textContent = `¥ ${hhTotalMonthlyCost.toLocaleString()}`;
+
+                const costDiff = userMonthlyCost - hhTotalMonthlyCost;
+                const diffElem = document.getElementById('resCostDiff');
+                
+
+                
+                if (costDiff > 0) {
+                    diffElem.textContent = `You save ¥ ${costDiff.toLocaleString()}`;
+                    diffElem.className = "text-lg font-bold accent";
+                } else {
+                    diffElem.textContent = `Cost up ¥ ${Math.abs(costDiff).toLocaleString()}`;
+                    diffElem.className = "text-lg font-bold text-error";
+                }
+
+                const timeDiffMinutes = userMonthlyTime - hhMonthlyTime;
+                const timeDiffHours = (timeDiffMinutes / 60).toFixed(1);
+                document.getElementById('resTimeLost').textContent = timeDiffHours;
+                let opportunityCost = 0;
+                if (timeDiffMinutes > 0) {
+                    opportunityCost = Math.floor((timeDiffMinutes / 60) * 1000) + costDiff;
+                }
+
+                if (opportunityCost > 0){
+                    document.getElementById('resOpportunity').textContent = `${opportunityCost.toLocaleString()}`;
+                } else {
+                    document.getElementById('resOpportunity').textContent = `${opportunityCost.toLocaleString()}`;
+                }
+
+                resultPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
             }
-
-            setTimeout(type, typeSpeed);
-        }
-
-        document.addEventListener('DOMContentLoaded', type);
+        });
     </script>
 </body>
 </html>
